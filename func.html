@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Functionの練習</title>
+    </head>
+    <body>
+        <div id="output">こちらです！<br /></div>
+
+        <select name="" id="year"></select>
+        <select name="month" id="month"></select>
+        <select name="day" id="day"></select>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <script>
+            // 関数群
+            function rand(n) {
+                const num = Math.ceil(Math.random() * n);
+                
+                // 上記のコードは下記2行でやっていることと同じ
+                // const baseNum =  Math.random() * n;
+                // const num = Math.ceil(baseNum);
+
+                return num;
+            }
+            console.log(rand(5));
+            console.log(rand(15));
+
+            // 引数を3つ渡されて実行される関数を定義
+            function make_calender(strt, end, id) {
+                let str = "";
+
+                // 第一引数の回数から第二引数の回数までループ処理
+                for (let i = strt; i <= end; i++) {
+                    str += `<option>${i}</option>`;
+                }
+                console.log(id);
+
+                //jQueryの記法でhtmlのコードを第3引数の箇所に指定して入力
+                $(id).html(str);
+            }
+            // const year = document.querySelector('#year');
+            // const month = document.querySelector('#month');
+            // const day = document.querySelector('#day');
+
+            make_calender(1999, 2020, "#year");
+            make_calender(1, 12, "#month");
+            make_calender(1, 31, "#day");
+
+            // ちなみにJSで記載している内容はchromeの
+            // デベロッパーツールのSourcesにて確認ができる
+        </script>
+    </body>
+</html>
